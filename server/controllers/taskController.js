@@ -47,8 +47,46 @@ const getAllTasks = (req, res) => {
     res.status(200).json(rows);
   });
 };
+const updateTask = (req, res) => {
+  const { id } = req.params;
+  const { title, description, due_date, completed } = req.body;
 
+  if (!title || title.trim() === "") {
+    return res.status(400).json({
+      error: "Title is required"
+    });
+  }
+
+  const sql = `
+    UPDATE tasks
+    SET title = ?, description = ?, due_date = ?, completed = ?
+    WHERE id = ?
+  `;
+
+  db.run(
+    sql,
+    [title, description, due_date, completed, id],
+    function (err) {
+      if (err) {
+        return res.status(500).json({
+          error: err.message
+        });
+      }
+
+      if (this.changes === 0) {
+        return res.status(404).json({
+          error: "Task not found"
+        });
+      }
+
+      res.status(200).json({
+        message: "Task updated successfully"
+      });
+    }
+  );
+};
 module.exports = {
   createTask,
-  getAllTasks
+  getAllTasks,
+  updateTask
 };
