@@ -1,6 +1,6 @@
 import TaskItem from "./TaskItem";
 
-function TaskList({ tasks }) {
+function TaskList({ tasks, onDelete }) {
   return (
     <div>
       <h2>Tasks</h2>
@@ -12,6 +12,7 @@ function TaskList({ tasks }) {
           <TaskItem
             key={task.id}
             task={task}
+            onDelete={onDelete}
           />
         ))
       )}

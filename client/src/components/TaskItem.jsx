@@ -1,4 +1,14 @@
-function TaskItem({ task }) {
+function TaskItem({ task, onDelete }) {
+  const handleDelete = () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this task?"
+    );
+
+    if (confirmed) {
+      onDelete(task.id);
+    }
+  };
+
   return (
     <div>
       <h3>{task.title}</h3>
@@ -17,7 +27,7 @@ function TaskItem({ task }) {
         Complete
       </button>
 
-      <button>
+      <button onClick={handleDelete}>
         Delete
       </button>
     </div>

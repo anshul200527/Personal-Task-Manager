@@ -19,6 +19,18 @@ function App() {
     }
   };
 
+  const deleteTask = async (id) => {
+    try {
+      await axios.delete(
+        `http://localhost:5000/api/tasks/${id}`
+      );
+
+      fetchTasks();
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
+  };
+
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -29,7 +41,10 @@ function App() {
 
       <TaskForm onTaskCreated={fetchTasks} />
 
-      <TaskList tasks={tasks} />
+      <TaskList
+        tasks={tasks}
+        onDelete={deleteTask}
+      />
     </div>
   );
 }
