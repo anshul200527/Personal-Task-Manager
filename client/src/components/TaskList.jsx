@@ -1,3 +1,5 @@
+import TaskItem from "./TaskItem";
+
 function TaskList({ tasks }) {
   return (
     <div>
@@ -7,11 +9,10 @@ function TaskList({ tasks }) {
         <p>No tasks found.</p>
       ) : (
         tasks.map((task) => (
-          <div key={task.id}>
-            <h3>{task.title}</h3>
-            <p>{task.description}</p>
-            <p>{task.due_date}</p>
-          </div>
+          <TaskItem
+            key={task.id}
+            task={task}
+          />
         ))
       )}
     </div>
