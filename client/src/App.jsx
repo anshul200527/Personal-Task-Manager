@@ -27,7 +27,7 @@ function App() {
     <div>
       <h1>Personal Task Manager</h1>
 
-      <TaskForm />
+      <TaskForm onTaskCreated={fetchTasks} />
 
       <TaskList tasks={tasks} />
     </div>

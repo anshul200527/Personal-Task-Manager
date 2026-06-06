@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-function TaskForm() {
+function TaskForm({ onTaskCreated }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
@@ -9,29 +9,29 @@ function TaskForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-   try {
-  const response = await axios.post(
-    "http://localhost:5000/api/tasks",
-    {
-      title,
-      description,
-      due_date: dueDate
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/tasks",
+        {
+          title,
+          description,
+          due_date: dueDate
+        }
+      );
+
+      console.log("Task Created:", response.data);
+
+      // Refresh task list
+      onTaskCreated();
+
+      // Clear form
+      setTitle("");
+      setDescription("");
+      setDueDate("");
+
+    } catch (error) {
+      console.error("Error creating task:", error);
     }
-  );
-
-  console.log("Task Created:", response.data);
-
-  setTitle("");
-  setDescription("");
-  setDueDate("");
-
-} catch (error) {
-  console.error("Error creating task:", error);
-}
-
-    setTitle("");
-    setDescription("");
-    setDueDate("");
   };
 
   return (
