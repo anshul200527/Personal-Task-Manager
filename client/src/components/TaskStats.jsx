@@ -11,11 +11,19 @@ function TaskStats({ tasks }) {
     <div>
       <h2>Task Statistics</h2>
 
-      <p>Total Tasks: {totalTasks}</p>
+      <div className="stats-container">
+        <div className="stat-box">
+          Total: {totalTasks}
+        </div>
 
-      <p>Active Tasks: {activeTasks}</p>
+        <div className="stat-box">
+          Active: {activeTasks}
+        </div>
 
-      <p>Completed Tasks: {completedTasks}</p>
+        <div className="stat-box">
+          Completed: {completedTasks}
+        </div>
+      </div>
     </div>
   );
 }

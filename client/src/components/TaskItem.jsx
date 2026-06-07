@@ -19,7 +19,13 @@ function TaskItem({ task, onDelete, onToggle }) {
         Due: {task.due_date || "No Due Date"}
       </p>
 
-      <p>
+      <p
+        className={
+          task.completed
+            ? "completed-status"
+            : "active-status"
+        }
+      >
         Status: {task.completed ? "Completed" : "Active"}
       </p>
 
@@ -27,7 +33,8 @@ function TaskItem({ task, onDelete, onToggle }) {
         onClick={() => onToggle(task)}
       >
         {task.completed
-          ? "Mark Active" : "Complete"}
+          ? "Mark Active"
+          : "Complete"}
       </button>
 
       <button onClick={handleDelete}>

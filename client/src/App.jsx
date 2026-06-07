@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import "./App.css";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import TaskStats from "./components/TaskStats";
 import FilterBar from "./components/FilterBar";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchTasks = async () => {
     try {
@@ -56,7 +58,8 @@ function App() {
     fetchTasks();
   }, []);
 
-  const filteredTasks = tasks.filter((task) => {
+  const filteredTasks = tasks
+  .filter((task) => {
     if (filter === "active") {
       return !task.completed;
     }
@@ -66,28 +69,37 @@ function App() {
     }
 
     return true;
-  });
-
-  return (
-    <div>
-      <h1>Personal Task Manager</h1>
-
-      <TaskForm onTaskCreated={fetchTasks} />
-
-      <TaskStats tasks={tasks} />
-
-      <FilterBar
-        filter={filter}
-        setFilter={setFilter}
-      />
-
-      <TaskList
-        tasks={filteredTasks}
-        onDelete={deleteTask}
-        onToggle={toggleTaskStatus}
-      />
-    </div>
+  })
+  .filter((task) =>
+    task.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
   );
+  return (
+  <div>
+   <h1>Personal Task Manager</h1>
+
+<SearchBar
+  searchTerm={searchTerm}
+  setSearchTerm={setSearchTerm}
+/>
+
+<TaskForm onTaskCreated={fetchTasks} />
+
+<TaskStats tasks={tasks} />
+
+<FilterBar
+  filter={filter}
+  setFilter={setFilter}
+/>
+
+<TaskList
+  tasks={filteredTasks}
+  onDelete={deleteTask}
+  onToggle={toggleTaskStatus}
+/>
+  </div>
+);
 }
 
 export default App;
