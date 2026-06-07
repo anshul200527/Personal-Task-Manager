@@ -112,7 +112,7 @@ Make sure you have installed:
 ### Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/task-manager.git
+git clone https://github.com/anshul200527/task-manager.git
 cd task-manager
 ```
 
@@ -217,7 +217,7 @@ DELETE /api/tasks/:id
 B.Tech Computer Science and Engineering  
 Graphic Era Hill University
 
-GitHub: https://github.com/YOUR_GITHUB_USERNAME
+GitHub: https://github.com/anshul200527
 
 ---
 
