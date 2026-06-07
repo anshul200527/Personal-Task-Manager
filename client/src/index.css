@@ -85,3 +85,79 @@ button:hover {
   background: #2563eb;
   color: white;
 }
+.task-form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 20px auto;
+}
+
+.task-form input,
+.task-form textarea {
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.task-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.task-form button {
+  margin-top: 10px;
+  background: #2563eb;
+  color: white;
+}
+
+.task-form button:hover {
+  background: #1d4ed8;
+}
+.header {
+  margin-top: 20px;
+}
+
+.subtitle {
+  color: #94a3b8;
+  margin-top: -10px;
+  margin-bottom: 25px;
+}
+.search-bar {
+  max-width: 90%;
+}
+
+.task-card {
+  max-width: 700px;
+  width: 80%;
+  background: #1e293b;
+  padding: 20px;
+  margin: 15px auto;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+}
+
+.task-card button:first-of-type {
+  background: #22c55e;
+  color: white;
+}
+
+.task-card button:last-of-type {
+  background: #ef4444;
+  color: white;
+}
+
+.stat-box h3 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.stat-box p {
+  margin: 5px 0 0;
+  color: #cbd5e1;
+}

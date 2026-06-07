@@ -77,7 +77,12 @@ function App() {
   );
   return (
   <div>
-   <h1>Personal Task Manager</h1>
+   <div className="header">
+  <h1>Personal Task Manager</h1>
+  <p className="subtitle">
+    Organize and track your daily tasks
+  </p>
+</div>
 
 <SearchBar
   searchTerm={searchTerm}

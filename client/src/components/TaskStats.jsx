@@ -8,20 +8,23 @@ function TaskStats({ tasks }) {
   const activeTasks = totalTasks - completedTasks;
 
   return (
-    <div>
-      <h2>Task Statistics</h2>
+    <div className="stats-section">
+      <h2>Overview</h2>
 
       <div className="stats-container">
         <div className="stat-box">
-          Total: {totalTasks}
+          <h3>{totalTasks}</h3>
+          <p>Total Tasks</p>
         </div>
 
         <div className="stat-box">
-          Active: {activeTasks}
+          <h3>{activeTasks}</h3>
+          <p>Active Tasks</p>
         </div>
 
         <div className="stat-box">
-          Completed: {completedTasks}
+          <h3>{completedTasks}</h3>
+          <p>Completed Tasks</p>
         </div>
       </div>
     </div>

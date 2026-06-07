@@ -35,7 +35,10 @@ function TaskForm({ onTaskCreated }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+  onSubmit={handleSubmit}
+  className="task-form"
+>
       <h2>Add New Task</h2>
 
       <input
