@@ -4,9 +4,11 @@ import axios from "axios";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import TaskStats from "./components/TaskStats";
+import FilterBar from "./components/FilterBar";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [filter, setFilter] = useState("all");
 
   const fetchTasks = async () => {
     try {
@@ -54,6 +56,18 @@ function App() {
     fetchTasks();
   }, []);
 
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === "active") {
+      return !task.completed;
+    }
+
+    if (filter === "completed") {
+      return task.completed;
+    }
+
+    return true;
+  });
+
   return (
     <div>
       <h1>Personal Task Manager</h1>
@@ -62,8 +76,13 @@ function App() {
 
       <TaskStats tasks={tasks} />
 
+      <FilterBar
+        filter={filter}
+        setFilter={setFilter}
+      />
+
       <TaskList
-        tasks={tasks}
+        tasks={filteredTasks}
         onDelete={deleteTask}
         onToggle={toggleTaskStatus}
       />

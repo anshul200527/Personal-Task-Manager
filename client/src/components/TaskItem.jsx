@@ -10,7 +10,7 @@ function TaskItem({ task, onDelete, onToggle }) {
   };
 
   return (
-    <div>
+    <div className="task-card">
       <h3>{task.title}</h3>
 
       <p>{task.description}</p>
