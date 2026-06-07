@@ -9,15 +9,35 @@ function TaskItem({ task, onDelete, onToggle }) {
     }
   };
 
+  const isOverdue =
+    task.due_date &&
+    !task.completed &&
+    new Date(task.due_date) < new Date();
+
   return (
-    <div className="task-card">
+    <div
+      className={`task-card ${
+        isOverdue ? "overdue-task" : ""
+      }`}
+    >
       <h3>{task.title}</h3>
 
       <p>{task.description}</p>
 
       <p>
-        Due: {task.due_date || "No Due Date"}
+        Due:{" "}
+        {task.due_date
+          ? new Date(
+              task.due_date
+            ).toLocaleDateString()
+          : "No Due Date"}
       </p>
+
+      {isOverdue && (
+        <p className="overdue-text">
+          Overdue
+        </p>
+      )}
 
       <p
         className={
@@ -26,7 +46,10 @@ function TaskItem({ task, onDelete, onToggle }) {
             : "active-status"
         }
       >
-        Status: {task.completed ? "Completed" : "Active"}
+        Status:{" "}
+        {task.completed
+          ? "Completed"
+          : "Active"}
       </p>
 
       <button
