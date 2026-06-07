@@ -1,4 +1,4 @@
-function TaskItem({ task, onDelete }) {
+function TaskItem({ task, onDelete, onToggle }) {
   const handleDelete = () => {
     const confirmed = window.confirm(
       "Are you sure you want to delete this task?"
@@ -23,8 +23,11 @@ function TaskItem({ task, onDelete }) {
         Status: {task.completed ? "Completed" : "Active"}
       </p>
 
-      <button>
-        Complete
+      <button
+        onClick={() => onToggle(task)}
+      >
+        {task.completed
+          ? "Mark Active" : "Complete"}
       </button>
 
       <button onClick={handleDelete}>

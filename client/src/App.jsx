@@ -30,7 +30,23 @@ function App() {
       console.error("Error deleting task:", error);
     }
   };
+const toggleTaskStatus = async (task) => {
+  try {
+    await axios.put(
+      `http://localhost:5000/api/tasks/${task.id}`,
+      {
+        title: task.title,
+        description: task.description,
+        due_date: task.due_date,
+        completed: task.completed ? 0 : 1
+      }
+    );
 
+    fetchTasks();
+  } catch (error) {
+    console.error("Error updating task:", error);
+  }
+};
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -44,6 +60,7 @@ function App() {
       <TaskList
         tasks={tasks}
         onDelete={deleteTask}
+        onToggle={toggleTaskStatus}
       />
     </div>
   );
