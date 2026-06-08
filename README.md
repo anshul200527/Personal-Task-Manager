@@ -2,7 +2,13 @@
 
 A full-stack task management application built using React, Node.js, Express.js, and SQLite. This project helps users organize their daily tasks efficiently with features like task creation, search, filtering, completion tracking, and task statistics.
 
-https://anshul-task-manager.vercel.app/
+## Live Demo
+
+Frontend:
+https://anshul-task-manager.vercel.app
+
+Backend API:
+https://personal-task-manager-api-xdwc.onrender.com
 ---
 
 ## Overview
@@ -27,6 +33,11 @@ Personal Task Manager is a responsive web application that allows users to manag
 - SQLite Database Integration
 
 ---
+## Deployment
+
+Frontend: Vercel
+Backend: Render
+Database: SQLite
 
 ## Screenshots
 
@@ -210,7 +221,8 @@ DELETE /api/tasks/:id
 - Dark / Light Theme Toggle
 - Task Sorting Options
 - Dashboard Analytics
-
+- Current version uses a shared SQLite database.
+- Authentication and user-specific task management are planned future enhancements.
 ---
 
 ## Author
